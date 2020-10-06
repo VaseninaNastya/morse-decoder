@@ -1,4 +1,15 @@
-const MORSE_TABLE = {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                const expr = "0000101010000000101100101010110000000010**********00000011110000000010";
+                const expr2 = "0000101010 0000001011 0010101011 0000000010 ********** 0000001111 0000000010";
+                const MORSE_TABLE = {
     '.-':     'a',
     '-...':   'b',
     '-.-.':   'c',
@@ -40,6 +51,7 @@ const MORSE_TABLE = {
 function decode(expr) {
     let i = 0; 
     let newArr = [];
+    console.log(expr.length);  
     while(i<expr.length){    
         newArr.push(expr.slice(i, i+10))
         i=i+10
@@ -52,18 +64,31 @@ function decode(expr) {
         i=i+2
     }
     let newItemArr2= newItemArr.map(function(item){
-        if(item=="10"){return "."}
-        if(item=="11"){return "-"}
-        if(item=="00"){return ""}
-        if(item=="**"){return " "}
+if(item=="10"){return "."}
+if(item=="11"){return "-"}
+if(item=="00"){return ""}
+if(item=="**"){return " "}
     }).join("")
     return newItemArr2
+
+   /* let newItemArr3= newItemArr2.map(
+        function(item){
+            for (var prop in MORSE_TABLE) {
+        if(item==prop){
+let item = MORSE_TABLE[prop]
+console.log('newItemArr3',item);
+        }
+}    return newItemArr3
+        }
+    )*/
     }
 )
+
 let newArr3 =newArr2.map(function(item){
     for (var prop in MORSE_TABLE) {
         if(item==prop){
-        return item = MORSE_TABLE[prop]
+return item = MORSE_TABLE[prop]
+console.log('newItemArr3',item);
         }
         else if (item == "     "){
             return item = " "           
@@ -73,6 +98,7 @@ let newArr3 =newArr2.map(function(item){
 return newArr3.join("")
 }
 
-module.exports = {
-    decode
-}
+console.log( decode(expr) );
+    </script>
+</body>
+</html>
